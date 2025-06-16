@@ -1,0 +1,95 @@
+from random import randint
+from time import sleep
+
+# Dicionário com atributos de cada personagem
+characters = {
+    "Jack": {"strength": 2, "intelligence": 3, "stamina": 5, "health": 1},
+    "007n7": {"strength": 1, "intelligence": 4, "stamina": 5, "health": 1},
+    "Shedletsky": {"strength": 4, "intelligence": 3, "stamina": 3, "health": 1},
+    "Guest": {"strength": 5, "intelligence": 1, "stamina": 4, "health": 1},
+    "Chance": {"strength": randint(1, 5), "intelligence": randint(1, 5), "stamina": randint(1, 5), "health": 1},
+    "Two Time": {"strength": 5, "intelligence": 3, "stamina": 2, "health": 1},
+    "Elliot": {"strength": 0, "intelligence": 6, "stamina": 4, "health": 1},
+    "Dusekkar": {"strength": 1, "intelligence": 7, "stamina": 2, "health": 1},
+    "Taph": {"strength": 2, "intelligence": 6, "stamina": 2, "health": 1},
+    "Builderman": {"strength": 1, "intelligence": 8, "stamina": 1, "health": 1}
+}
+
+# Soma inicial dos atributos
+def calcular_totais(char_list):
+    total_strength = sum(characters[name]["strength"] for name in char_list)
+    total_intelligence = sum(characters[name]["intelligence"] for name in char_list)
+    total_stamina = sum(characters[name]["stamina"] for name in char_list)
+    return total_strength, total_intelligence, total_stamina
+
+# Introdução do jogo
+escolha = input("START GAME? yes | no : ").strip().lower()
+
+if escolha == "no":
+    sleep(0.5)
+    print("Ok, whenever you want to start, tell me.")
+elif escolha == "yes":
+    sleep(0.5)
+    print("Let's do this")
+    sleep(0.5)
+    print("You were trapped by an entity called 'The Spectre'")
+    sleep(2)
+    print("He tortures people for fun, and is known to be merciless.")
+    sleep(2.75)
+    print("You and your colleagues are going to enter the limbo.")
+    sleep(2)
+    print("The reward of entering and getting out is freedom.")
+    sleep(1.75)
+    print("The people who are going with you are:")
+    sleep(1.5)
+
+    for name in characters:
+        print(f"{name} - {'yourself' if name == 'Jack' else '...'}")
+        sleep(1.5)
+
+    print("But someone has to be left behind, to make sure the plan does not raise suspicion.")
+    sleep(2)
+
+    while True:
+        escolha_personagem = input("Who will it be? ").strip().title()
+        if escolha_personagem in characters:
+            print(f"{escolha_personagem} foi abandonado.")
+            
+            if escolha_personagem == "Jack":
+                print("You decided to be left behind.")
+                sleep(1.5)
+                print("For the best of them.")
+                sleep(1.5)
+                print("But HE sees you and wants to know where they are.")
+                sleep(1.5)
+                final1_2 = input("Will you snitch? yes | no : ").strip().lower()
+                if final1_2 == "yes":
+                    print("You decided to tell the truth.")
+                    sleep(1.5)
+                    print("So as a reward you are free.")
+                    sleep(1.5)
+                    print("But you're forced to see your friends die.")
+                    sleep(1.5)
+                    print("While they know you snitched on them.")
+                    print("Ending 1: The Snitch - You won, but at what cost?")
+                elif final1_2 == "no":
+                    print("You decided to lie.")
+                    sleep(1.5)
+                    print("He respects your decision, but kills you for tricking him.")
+                    sleep(1.5)
+                    print("Ending 2: Heroic Ending - You sacrificed yourself and are remembered.")
+                break
+            else:
+                # Remove personagem e atualiza os totais
+                del characters[escolha_personagem]
+                total_strength, total_intelligence, total_stamina = calcular_totais(characters)
+                print(f"Grupo final:")
+                for p in characters:
+                    print(f"- {p}")
+                print(f"\nTotal Strength: {total_strength}")
+                print(f"Total Intelligence: {total_intelligence}")
+                print(f"Total Stamina: {total_stamina}")
+                # Aqui você pode continuar com o resto da história/jogo
+                break
+        else:
+            print("Nome inválido ou personagem já removido. Tente novamente.")
