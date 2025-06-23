@@ -3,11 +3,11 @@ from time import sleep
 
 characters = {
     "Jack": {"strength": 2, "intelligence": 3, "stamina": 5,},
-    "007n7": {"strength": 1, "intelligence": 4, "stamina": 5,},
+    "_007n7": {"strength": 1, "intelligence": 4, "stamina": 5,},
     "Shedletsky": {"strength": 4, "intelligence": 3, "stamina": 3,},
     "Guest": {"strength": 5, "intelligence": 1, "stamina": 4, },
     "Chance": {"strength": randint(1, 5), "intelligence": randint(1, 5), "stamina": randint(1, 5), },
-    "Two Time": {"strength": 5, "intelligence": 3, "stamina": 2,},
+    "Two_time": {"strength": 5, "intelligence": 3, "stamina": 2,},
     "Elliot": {"strength": 0, "intelligence": 5, "stamina": 5,},
     "Dusekkar": {"strength": 1, "intelligence": 7, "stamina": 2,},
     "Taph": {"strength": 2, "intelligence": 6, "stamina": 2,},
@@ -50,7 +50,7 @@ elif Escolha == "Yes":
     sleep(1.5)
     print("Two Time - killer who sacrificed his best friend for his cult (the respawn)")
     sleep(3.5)
-    print("Elliot - Chef who we do not know how the hell he ended up there")
+    print("Elliot - Chef who we do not know how the heck he ended up there")
     sleep(3.5)
     print("Dusekkar - A wizard")
     sleep(1.5)
@@ -62,7 +62,7 @@ elif Escolha == "Yes":
     sleep(2)
     while True:
         escolha_personagem = input("Who will it be? ")
-        escolha_personagem.capitalize()
+        escolha_personagem = escolha_personagem.capitalize()
         if escolha_personagem in characters:
             print(f"{escolha_personagem} was abandoned.")
             sleep(1)
@@ -106,7 +106,7 @@ elif Escolha == "Yes":
                 break
     print("your group continues onward")
     sleep(1.5)
-    print("But you sense a mysterious ")
+    print("But you sense a mysterious figure ")
     sleep(1.5)
     print("someone who wants revenge")
     sleep(1.5)
@@ -114,47 +114,53 @@ elif Escolha == "Yes":
     sleep(1.5)
     print("You have to options:")
     sleep(1.5)
-    print("1 : flee with everyone")
+    print("flee with everyone")
     sleep(1.5)
-    print("2 : abandon someone to have enough time to escape")
+    print("abandon someone to have enough time to escape")
     sleep(1.5)
-    decisao1 = input("what will you do? Abandon | Flee ")
-    sleep(1.5)
-    if decisao1 == "Flee":
-        if total_stamina >= 32:
-            print("Your team got away without a scratch")
-            sleep(1.5)
-        else:
-            print("Your team tried to escape")
-            sleep(1.5)
-            print("but he catched up to the group")
-            sleep(1.5)
-            print("and everyone died to the man")
-            sleep(1.5)
-            print("Ending 3: Brutality - everyone in tyhe group died to Jason. Tip: he is very fast, so choose to flee if you have a very high group stamina")
-            exit()
-    elif decisao1 == "Abandon":
-        while True:
-            escolha_personagem2 = input("Who will it be?").strip().title()
-            if escolha_personagem2 in characters:
-                print(f"{escolha_personagem2} was abandoned.")
-                sleep(1.5)
-                if escolha_personagem2 == "Jack":
-                    print("you decided to sacrifice yourself")
+    while True:
+        decisao1 = input("what will you do? Abandon | Flee ")
+        decisao1 = decisao1.capitalize()
+        sleep(1.5)
+        if decisao1 == "Flee" or "Abandon":
+            if decisao1 == "Flee":
+                if total_stamina >= 32:
+                    print("Your team got away without a scratch")
                     sleep(1.5)
-                    print("Ending 4 : Forsakened - you died")
-                    exit()
-                else:
-                    del characters[escolha_personagem2]
-                    total_strength, total_intelligence, total_stamina = calcular_totais(characters)
-                    print(f"Survivors still alive:")
-                    for p in characters:
-                        print(f"- {p}")
-                        sleep(1)
-                    print(f"\nTotal Strength: {total_strength}")
-                    print(f"Total Intelligence: {total_intelligence}")
-                    print(f"Total Stamina: {total_stamina}")
                     break
+                else:
+                    print("Your team tried to escape")
+                    sleep(1.5)
+                    print("but he catched up to the group")
+                    sleep(1.5)
+                    print("and everyone died to the man")
+                    sleep(1.5)
+                    print("Ending 3: Brutality - everyone in the group died to Jason. Tip: he is very fast, so choose to flee if you have a very high group stamina")
+                    exit()
+            elif decisao1 == "Abandon":
+                while True:
+                    escolha_personagem2 = input("Who will it be? ")
+                    escolha_personagem2 = escolha_personagem2.capitalize()
+                    if escolha_personagem2 in characters:
+                        print(f"{escolha_personagem2} was abandoned.")
+                        sleep(1.5)
+                        if escolha_personagem2 == "Jack":
+                            print("you decided to sacrifice yourself")
+                            sleep(1.5)
+                            print("Ending 4 : Forsakened - you died")
+                            exit()
+                        else:
+                            del characters[escolha_personagem2]
+                            total_strength, total_intelligence, total_stamina = calcular_totais(characters)
+                            print(f"Survivors still alive:")
+                            for p in characters:
+                                print(f"- {p}")
+                                sleep(1)
+                            print(f"\nTotal Strength: {total_strength}")
+                            print(f"Total Intelligence: {total_intelligence}")
+                            print(f"Total Stamina: {total_stamina}")
+                            break
+                break
     print("after escaping Jason, you spot a Carnival")
     sleep(1.5)
     print("but something feels odd")
@@ -165,9 +171,9 @@ elif Escolha == "Yes":
     sleep(1.5)
     print("Someone has to play his little game to move on")
     sleep(1.5)
-
     while True:
-        escolha_personagem3 = input("Who will it be? ").strip().title()
+        escolha_personagem3 = input("Who will it be? ")
+        escolha_personagem3 = escolha_personagem3.capitalize()
         if escolha_personagem3 in characters:
             print(f"{escolha_personagem3} was abandoned.")
             sleep(1.5)
@@ -176,8 +182,7 @@ elif Escolha == "Yes":
                 sleep(1.5)
                 print("Ending 4 : Forsakened - you died")
                 exit()
-
-            elif escolha_personagem3 == "007n7":
+            if escolha_personagem3 == "_007n7":
                 print("007n7 was left behind")
                 sleep(1.5)
                 print("But the spectre appears out of nowhere and gives an offer to him")
@@ -221,7 +226,7 @@ elif Escolha == "Yes":
     sleep(1.5)
     print("or go through him")
     sleep(1.5)
-    decisao2 = input("what will you do? Fight | Go through the place (Note: if you choose this option, you have to put 'go' and not the full sentence) ")
+    decisao2 = input("what will you do? Fight | Go through ")
     decisao2.capitalize()
     sleep(1.5)
     if decisao2 == "Fight":
@@ -277,7 +282,7 @@ elif Escolha == "Yes":
             print(f"- {p}")
             sleep(1)
         escolha_personagem4 = input("Who will it be?")
-        escolha_personagem4.capitalize()
+        escolha_personagem4 = escolha_personagem4.capitalize()
         if escolha_personagem4 in characters:
             print(f"{escolha_personagem4} was chosen.")
             sleep(1.5)
@@ -365,10 +370,6 @@ elif Escolha == "Yes":
                     print("And the survivors escaped his terror")
                     sleep(1.5)
                     print("Ending 8: freedom - you win")
-                sleep(1.5)
-                print(f"Survivors:")
-                for p in characters:
-                    print(f"- {p}")
                     sleep(1.5)
                     exit()
             else:
